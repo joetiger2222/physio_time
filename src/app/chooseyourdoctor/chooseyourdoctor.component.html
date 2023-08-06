@@ -1,0 +1,51 @@
+<div class="chooseYourDoctorConatainer">
+  <h1>Choose Your Doctor</h1>
+  <div class="imgsContainer">
+    <div class="img" routerLink="/ReserveAppointment/RagabMohammed">
+      <img
+        style="width: 100%; border-radius: 10px 10px 0 0"
+        src="../../assets/ragab.jpg"
+      />
+      <h4>Dr. Ragab Mohammed</h4>
+    </div>
+    <div class="img" routerLink="/ReserveAppointment/MarawanMohammed">
+      <img
+        style="width: 100%; border-radius: 10px"
+        src="../../assets/marawan.jpg"
+      />
+      <h4>Dr. Marawan Omara</h4>
+    </div>
+  </div>
+  <div class="img" style="margin-bottom: 50px" (click)="openModal()">
+    <img
+      style="width: 100%; border-radius: 10px"
+      src="../../assets/female.png"
+    />
+    <h4>Female Doctor</h4>
+  </div>
+</div>
+
+
+<div class="modal-overlay" id="myModal">
+    <div class="requestFemaleContainer">
+        <h1>Request Female Doctor</h1>
+        <h3>To Request A Female Doctor Please Contact:</h3>
+        <div class="phoneNumberContainer">
+            <h3>Dr. Ragab Mohammed : </h3>
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=201028242712" style="font-size: 20px;font-weight: bold;text-decoration: none;color: blue;">01028242712</a>
+        </div>
+        <h3>OR</h3>
+        <div class="phoneNumberContainer">
+            <h3>Dr. Marwan Omara : </h3>
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=201028242712" style="font-size: 20px;font-weight: bold;text-decoration: none;color: blue;">01028242712</a>
+        </div>
+        <button class="cancelModal" (click)="closeModal()">
+            Cancel
+        </button>
+    </div>
+
+</div>
+
+
+
+

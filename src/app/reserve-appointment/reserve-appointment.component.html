@@ -1,0 +1,65 @@
+<div class="calendarContainer">
+  <h1>Choose Reservation Date</h1>
+  <div class="calendarAndTimesContainer">
+    <div class="calendar">
+      <full-calendar
+        style="width: 100% "
+        [options]="calendarOptions"
+      ></full-calendar>
+    </div>
+    <div class="timesContainer">
+      <h1 *ngIf="date!==''">Choose Time In {{ date }}</h1>
+      <h3 *ngIf="date===''">Select Date To View Availble Times</h3>
+      <div class="times" *ngIf="date !== ''">
+        <h1 class="time" *ngFor="let time of times" (click)="openModal()">
+          {{ time }} <span *ngIf="time >= 12">PM</span>
+          <span *ngIf="time < 12">AM</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="myModal">
+    <form class="ReserveModal" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <h1>Reservation</h1>
+      <div class="ReserveModalInputContainer">
+        <label for="name">Name:</label>
+        <input type="text" placeholder="Name" ngModel name="name" required />
+      </div>
+      <div class="ReserveModalInputContainer">
+        <label for="name">Phone Number:</label>
+        <input
+          type="number"
+          placeholder="Phone Number"
+          ngModel
+          name="phoneNumber"
+          required
+        />
+      </div>
+      <div class="ReserveModalInputContainer">
+        <label for="name">Email Address:</label>
+        <input
+          type="email"
+          placeholder="Email Address"
+          ngModel
+          name="email"
+          required
+          email
+          #email="ngModel"
+        />
+      </div>
+      <div class="cancelSubmitModalContainer">
+        <button class="cancelModal" (click)="closeModal()" type="button">Cancel</button>
+        <button
+          class="cancelModal"
+          type="submit"
+          style="background-color: rgb(82, 147, 25)"
+          [disabled]="!f.valid"
+          
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

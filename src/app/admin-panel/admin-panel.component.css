@@ -1,0 +1,75 @@
+.adminPanelContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(18 118 44);
+    color: white;
+}
+.background{
+    margin-top: auto;
+    width: 100%;
+    min-height: 70vh;
+    padding: 20px 0;
+    overflow-y: auto;
+    background-color: #dfdede; 
+    border-radius: 100px 100px 0 0 ;
+    background-image: url(../../assets/footer.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(82, 147, 25);
+}
+.adminPanelContainer>h1{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.appts{
+    width: 90%;
+    /* padding: 20px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 50px;
+    column-gap: 50px;
+}
+
+.singleAppt{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70%;
+    max-width: 300px;
+    row-gap: 30px;
+    background-color:#216869;
+    /* color: rgb(56 21 124); */
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 7px 20px 8px 0 rgba(0, 0, 0, 0.2), 4px -3px 20px 0 rgba(0, 0, 0, 0.19);
+}
+h3{
+    margin: 0;
+}
+@media only screen and (max-width:400px) {
+    .adminPanelContainer>h1{
+        font-size: 2rem;
+        margin-top: 100px;
+        text-align: center;
+    }
+    .background{
+        border-radius: 70px 70px 0 0 ;
+    }
+    
+    }
+
+/* colors */
+/* green rgb(107, 195, 32); */
+/* dark green rgb(82, 147, 25); */
+/* dark white #dfdede; */
