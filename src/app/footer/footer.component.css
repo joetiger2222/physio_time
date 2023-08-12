@@ -26,7 +26,7 @@
 }
 
 .social>img:hover{
-    width: 60px;
+    transform: scale(1.1);
     cursor: pointer;
     
 }
@@ -37,7 +37,7 @@
     align-items: center;
 }
 .adminLogin>button{
-    width:70%;
+    width:80%;
     max-width: 200px;
     height: 50px;
     background-color: white;
@@ -45,15 +45,14 @@
     color: rgb(82, 147, 25);
     font-size: 20px;
     font-weight: bold;
-    transition: ease .3s ;
+    transition: ease .5s ;
 
 }
 .adminLogin>button:hover{
     cursor: pointer;
     background-color: white;
     color: rgb(82, 147, 25);;
-    width: 250px;
-    height: 60px;
+    transform: scale(1.1);
 }
 
 

@@ -8,13 +8,15 @@
       ></full-calendar>
     </div>
     <div class="timesContainer">
-      <h1 *ngIf="date!==''">Choose Time In {{ date }}</h1>
-      <h3 *ngIf="date===''">Select Date To View Availble Times</h3>
-      <div class="times" *ngIf="date !== ''">
-        <h1 class="time" *ngFor="let time of times" (click)="openModal()">
-          {{ time }} <span *ngIf="time >= 12">PM</span>
-          <span *ngIf="time < 12">AM</span>
+      <h1 *ngIf="mySingleDayData?.doctorId">Choose Time In {{ date }}</h1>
+      <h3 *ngIf="date===''">Select Date To View Available Times</h3>
+      <h3 *ngIf="date!=='' && mySingleDayData?.doctorId===undefined">No Available Times</h3>
+      <div class="times" *ngIf="mySingleDayData?.times">
+        <ng-container *ngFor="let time of mySingleDayData.times">
+        <h1 class="time" *ngIf="isTimeAvailble(time)" (click)="openModal(time)">
+          {{convertTimeToNumber(time)}}
         </h1>
+      </ng-container>
       </div>
     </div>
   </div>
@@ -29,7 +31,7 @@
       <div class="ReserveModalInputContainer">
         <label for="name">Phone Number:</label>
         <input
-          type="number"
+          type="text"
           placeholder="Phone Number"
           ngModel
           name="phoneNumber"
@@ -62,4 +64,20 @@
       </div>
     </form>
   </div>
+
+
+  <div class="modal-overlay" id="succededModal">
+    <div class="succededModal" >
+      <img src="../../assets/checked.png" />
+      <h1>Reservation Succeded!</h1>
+      <button (click)="closeSuccedessModal()" class="cancelModal">Close</button>
+      </div>
+      
+        
+      
+    
+  </div>
+
+
+
 </div>

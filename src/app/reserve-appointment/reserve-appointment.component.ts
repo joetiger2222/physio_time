@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,50 +13,138 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./reserve-appointment.component.css'],
 })
 export class ReserveAppointmentComponent {
-
-  constructor(private route:ActivatedRoute){}
-  patientName:string='';
+  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  
+  doctorId:string = '';
   ngOnInit() {
-    this.route.params.subscribe(params=>{
-          console.log(params['doctorName']);
-        })
+    this.route.params.subscribe((params) => {
+      console.log(params['doctorId']);
+      this.doctorId = params['doctorId'];
+    });
+    
   }
-  date: String = '';
-  times:Array<number> = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+  mySingleDayData!: singleDay;
+
+  date: string = '';
+  choosenTime:string='';
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
     eventColor: '#378006',
     selectable: true,
     validRange: {
-      start: new Date().toISOString().slice(0, 10), // Restrict past dates, include only today and beyond
+      start: new Date().toISOString().slice(0, 10),
     },
-    
+    longPressDelay: 0,
+
     select: (info) => {
       this.date = info.startStr;
-      console.log('touched')
+      this.getAvaibleAppts(info.startStr);
     },
-    hiddenDays:[5],
+    hiddenDays: [5],
+    headerToolbar: {
+      start: 'title', // Display the title on the left
+      center: '', // Remove buttons from the center
+      end: 'prev,next', // Display only prev and next buttons on the right
+    },
   };
 
-
-  openModal(){
-    const modalDiv=document.getElementById('myModal');
-    if(modalDiv!=null){
-      modalDiv.style.display="flex";
+  openModal(time:string) {
+    this.choosenTime = time;
+    console.log(this.choosenTime);
+    const modalDiv = document.getElementById('myModal');
+    if (modalDiv != null) {
+      modalDiv.style.display = 'flex';
     }
   }
 
-  closeModal(){
-    const modalDiv=document.getElementById('myModal');
-    if(modalDiv!=null){
-      modalDiv.style.display="none";
+  closeModal() {
+    const modalDiv = document.getElementById('myModal');
+    if (modalDiv != null) {
+      modalDiv.style.display = 'none';
     }
   }
 
-  onSubmit(elemet:NgForm){
-    console.log(elemet.value);
+  openSuccedessModal() {
+    const modalDiv = document.getElementById('succededModal');
+    if (modalDiv!= null) {
+      modalDiv.style.display = 'flex';
+    }
   }
 
+  closeSuccedessModal() {
+    const modalDiv = document.getElementById('succededModal');
+    if (modalDiv!= null) {
+      modalDiv.style.display = 'none';
+    }
+    this.getAvaibleAppts(this.date);
+  }
+
+  getAvaibleAppts(date: string) {
+    this.mySingleDayData = {} as singleDay;
+     this.http
+      .get<singleDay>(
+        `https://physiotime-001-site1.atempurl.com/api/Doctors/DoctoryDays/${this.doctorId}/${date}`
+      ).subscribe({
+        next:res=>res.times.length>0?this.mySingleDayData=res:null,
+        error:err=>console.log(err.error) 
+      })
+  }
+
+  onSubmit(elemet: NgForm) {
+    const body={
+      date:this.date,
+      time:this.choosenTime,
+      doctorId:this.doctorId,
+      patientName:elemet.value.name,
+      patientMobileNo:elemet.value.phoneNumber,
+      patientEmail:elemet.value.email,
+      patientAge:22
+    }
+    this.http.post('https://physiotime-001-site1.atempurl.com/api/Appointments/Reservation',body).subscribe({
+      next:res=>{
+        console.log(res);
+        this.closeModal();
+        this.openSuccedessModal();
+      },
+      error:err=>console.log(err.error)
+    })
+  }
+
+
+
+
+convertTimeToNumber(time:any){
+  const hours:number=Number(time.slice(0,2));
+    if(hours*1>12){
+      return hours-12+':00 PM';
+    }
+    return hours*1+':00'+' AM';
+ 
+}
+
+
+isTimeAvailble(time:any){
+  const hours:number=Number(time.slice(0,2));
+  const date=new Date
+  const currentHour:number=Number(date.toString().slice(16,18));
+  if(date.toISOString().slice(0,10)===this.date){
+    if(currentHour+3>hours){
+      return false
+    }else {
+      return true;
+    }
+  }
+  return true;
   
+}
+
+
+}
+
+interface singleDay {
+  appointmentDay: string;
+  doctorId: string;
+  id: number;
+  times: [string];
 }

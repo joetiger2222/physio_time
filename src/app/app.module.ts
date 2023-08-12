@@ -13,15 +13,17 @@ import { ReserveAppointmentComponent } from './reserve-appointment/reserve-appoi
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ChooseyourdoctorComponent } from './chooseyourdoctor/chooseyourdoctor.component';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {HttpClientModule} from '@angular/common/http';
+import { AddnewdaysComponent } from './addnewdays/addnewdays.component';
 
 
 const appRoute: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'AdminLogin', component: AdminLoginComponent },
-  { path: 'AdminPanel', component: AdminPanelComponent },
+  { path: 'AdminPanel/:doctorId', component: AdminPanelComponent },
   { path: 'ChooseYourDoctor', component: ChooseyourdoctorComponent },
-  { path: 'ReserveAppointment/:doctorName', component: ReserveAppointmentComponent },
+  { path: 'ReserveAppointment/:doctorId', component: ReserveAppointmentComponent },
+  {path:'AddNewDays/:doctorId',component:AddnewdaysComponent},
 ];
 
 @NgModule({
@@ -34,6 +36,7 @@ const appRoute: Routes = [
     AdminPanelComponent,
     ReserveAppointmentComponent,
     ChooseyourdoctorComponent,
+    AddnewdaysComponent,
 
   ],
   imports: [
@@ -43,6 +46,7 @@ const appRoute: Routes = [
     RouterModule.forRoot(appRoute),
     FullCalendarModule,
     MatDialogModule,
+    HttpClientModule,
 
   ],
   providers: [],

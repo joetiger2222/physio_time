@@ -51,11 +51,11 @@
   transition: all ease 0.5s;
 }
 
-.landingImgButton:hover {
+/* .landingImgButton:hover {
   max-width: 320px;
   height: 70px;
   font-size: 25px;
-}
+} */
 .imgsWithOverLayTextContainer {
   width: 80%;
   display: flex;

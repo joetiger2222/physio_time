@@ -69,7 +69,7 @@
 .times {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 90%;
   row-gap: 10px;
@@ -181,6 +181,22 @@ input.ng-invalid.ng-touched {
   border: 1px solid red !important;
 }
 
+.succededModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 10px;
+  row-gap: 20px;
+  padding: 20px;
+}
+.succededModal>img{
+  width: 80%;
+  max-width: 200px;
+}
+
 @media only screen and (max-width: 900px) {
   .calendarAndTimesContainer {
     flex-direction: column;
@@ -211,6 +227,25 @@ input.ng-invalid.ng-touched {
   .calendarAndTimesContainer {
     width: 95%;
   }
+  ::ng-deep .fc-today-button {
+    display: none;
+  }
+  .timesContainer>h1{
+    font-size: 20px;
+  }
+  ::ng-deep.fc-daygrid-day:hover {
+  background: white;
+}
+.cancelSubmitModalContainer{
+  flex-direction: column-reverse;
+  row-gap: 20px;
+}
+.cancelSubmitModalContainer>button{
+  width: 50%;
+  height: 30px;
+  font-size: 16px;
+  font-weight: normal;
+}
 }
 
 /* colors */
