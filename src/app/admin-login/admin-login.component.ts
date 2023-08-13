@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 export class AdminLoginComponent {
   constructor(private http:HttpClient,private router:Router){}
   userData!:userIdAndToken;
+  isLoading:boolean=false;
   onSubmit(emailAndPassword:NgForm){
+    this.isLoading=true;
     const el=document.getElementById('wrongEmailOrPasswordMessaage');
         if(el!==null){
           el.style.display='none';
@@ -21,6 +23,7 @@ export class AdminLoginComponent {
         el.style.display='block';
 
       }
+      this.isLoading=false;
       return;
     }else if(emailAndPassword.form.controls['email']['valid']){
       const el=document.getElementById('emailMessage');
@@ -37,6 +40,7 @@ export class AdminLoginComponent {
         el.style.display='block';
 
       }
+      this.isLoading=false;
       return;
     }else if(emailAndPassword.form.controls['password']['valid']){
       const el=document.getElementById('passwordMessage');
@@ -46,10 +50,12 @@ export class AdminLoginComponent {
     }
     this.http.post<userIdAndToken>('https://physiotime-001-site1.atempurl.com/api/Authentication/Login',emailAndPassword.value).subscribe({
       next:res=>{
+        this.isLoading=false;
         this.userData=res
         this.router.navigate([`/AdminPanel/${res.userId}`]);
       },
       error:err=>{
+        this.isLoading=false;
         const el=document.getElementById('wrongEmailOrPasswordMessaage');
         if(el!==null){
           el.style.display='block';

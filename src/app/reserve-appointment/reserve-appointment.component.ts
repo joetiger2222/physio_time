@@ -16,9 +16,9 @@ export class ReserveAppointmentComponent {
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
   
   doctorId:string = '';
+  timesLoading:boolean = false;
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      console.log(params['doctorId']);
       this.doctorId = params['doctorId'];
     });
     
@@ -81,13 +81,25 @@ export class ReserveAppointmentComponent {
   }
 
   getAvaibleAppts(date: string) {
+    this.timesLoading = true;
     this.mySingleDayData = {} as singleDay;
      this.http
       .get<singleDay>(
         `https://physiotime-001-site1.atempurl.com/api/Doctors/DoctoryDays/${this.doctorId}/${date}`
       ).subscribe({
-        next:res=>res.times.length>0?this.mySingleDayData=res:null,
-        error:err=>console.log(err.error) 
+        // next:res=>res.times.length>0?this.mySingleDayData=res:null,
+        next:res=>{
+          this.timesLoading=false
+          if(res.times.length>0){
+            this.mySingleDayData=res;
+          }else {
+            null
+          }
+        },
+        error:err=>{
+          this.timesLoading=false
+          console.log(err);
+        }
       })
   }
 

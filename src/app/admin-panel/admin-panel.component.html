@@ -1,12 +1,17 @@
 <div class="adminPanelContainer">
   <div class="headerContainer">
     <h1>Scheduled Appointments</h1>
-    <button (click)="getTodayAppts()" class="todayApptButton" id="todayApptButton">
-      Show Only Today Appointments
-    </button>
-    <button class="todayApptButton" [routerLink]="'/AddNewDays/' + doctorId">
-      Add New Days
-    </button>
+    <div class="adminPanelButtonsContainer">
+      <button (click)="getTodayAppts()" class="todayApptButton" id="todayApptButton" style="font-size:16px;">
+        Show Only Today Appointments
+      </button>
+      <button class="todayApptButton" [routerLink]="'/AddNewDays/' + doctorId">
+        Add New Days
+      </button>
+      <button class="todayApptButton" [routerLink]="'/EditDays/' + doctorId">
+        Edit Days
+      </button>
+    </div>
   </div>
   <div class="background">
     <div class="appts">
