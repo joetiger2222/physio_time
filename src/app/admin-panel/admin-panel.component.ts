@@ -12,6 +12,7 @@ export class AdminPanelComponent {
   appointmentId: string = '';
   reservedAppointments: Appointment[] = [];
   reservedCopy: Appointment[] = [];
+  isLoading:boolean = false;
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -22,6 +23,7 @@ export class AdminPanelComponent {
   }
 
   getReservedAppointements() {
+    this.isLoading=true;
     this.http
       .get<Appointment[]>(
         `https://physiotime-001-site1.atempurl.com/api/Appointments/ReservedAppointments/${this.doctorId}`
@@ -29,10 +31,12 @@ export class AdminPanelComponent {
       .subscribe({
         next: (res) => {
           this.reservedAppointments = res;
-          this.reservedCopy=res;
+          this.reservedCopy=res;  
+          this.isLoading=false
         },
         error: (err) => {
           console.log(err);
+          this.isLoading=false
         },
       });
   }

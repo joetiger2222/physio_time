@@ -73,12 +73,42 @@
     <div class="succededModal" >
       <img src="../../assets/checked.png" />
       <h1>Reservation Succeded!</h1>
+      <h4>If You Which To Cancel Your Reservation Please Contact:</h4>
+      <a
+        target="_blank"
+        href="https://api.whatsapp.com/send?phone=201028242712"
+        style="
+          font-size: 20px;
+          font-weight: bold;
+          text-decoration: none;
+          color: blue;
+        "
+        >DR. Ragab Mohamed</a
+      >
+      <h4>OR</h4>
+      <a
+        target="_blank"
+        href="https://api.whatsapp.com/send?phone=201222209731"
+        style="
+          font-size: 20px;
+          font-weight: bold;
+          text-decoration: none;
+          color: blue;
+        "
+        >DR. Marwan Omara</a
+      >
       <button (click)="closeSuccedessModal()" class="cancelModal">Close</button>
       </div>
       
         
       
     
+  </div>
+
+  <div class="modal-overlay" style="display: flex;" *ngIf="isReserveingLoading">
+    
+      <img src="../../assets/loader2.gif" />
+   
   </div>
 
 

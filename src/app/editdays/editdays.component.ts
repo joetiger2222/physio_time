@@ -13,6 +13,7 @@ export class EditdaysComponent {
   choosenDayId:number=0;
   startTime:number=0;
   endTime:number=0;
+  isLoading:boolean=false;
 constructor(private http: HttpClient,private route:ActivatedRoute) { }
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -26,15 +27,17 @@ constructor(private http: HttpClient,private route:ActivatedRoute) { }
       next:res=>{
         const filtered = res.filter(day => !appts.some(appt => appt.date === day.appointmentDay));
         this.allDoctorDays=filtered;
+        this.isLoading=false;
       },
       error:err=>{
-
+        this.isLoading=false;
       }
     })
   }
 
 
   getReservedAppointements() {
+    this.isLoading=true;
     this.http
       .get<Appointment[]>(
         `https://physiotime-001-site1.atempurl.com/api/Appointments/ReservedAppointments/${this.doctorId}`
@@ -75,13 +78,15 @@ constructor(private http: HttpClient,private route:ActivatedRoute) { }
   }
 
   DeleteDay(){
+    this.isLoading=true
     this.http.delete(`https://physiotime-001-site1.atempurl.com/api/Doctors/DoctorDay/${this.choosenDayId}`).subscribe({
       next:res=>{
-        alert('Day Deleted Successfully');
+        this.isLoading=false
         this.getReservedAppointements();
         this.CloseDeleteDayModal();
       },
       error:err=>{
+        this.isLoading=false
         alert('Error')
       }
     })
@@ -101,12 +106,14 @@ constructor(private http: HttpClient,private route:ActivatedRoute) { }
 
   }
   editDay(){
+    this.isLoading=true
     if(this.startTime<=0){
       const el=document.getElementById('warningMessage');
       if(el!==null){
         el.innerHTML="Please Enter A Valid Start Time";
         el.style.display="block";
       }
+      this.isLoading=false
       return;
     }
     if(this.endTime<=0||this.endTime<=this.startTime){
@@ -115,6 +122,7 @@ constructor(private http: HttpClient,private route:ActivatedRoute) { }
         el.innerHTML="Please Enter A Valid End Time";
         el.style.display="block";
       }
+      this.isLoading=false
       return;
     }
     const body={
@@ -123,12 +131,12 @@ constructor(private http: HttpClient,private route:ActivatedRoute) { }
     }
     this.http.put(`https://physiotime-001-site1.atempurl.com/api/Doctors/DoctorDays/${this.choosenDayId}`,body).subscribe({
       next:res=>{
-        alert('Day Updated Successfully');
+        this.isLoading=false
         this.getReservedAppointements();
         this.CloseEditModal();
       },
       error:err=>{
-        alert('failed');
+        this.isLoading=false
       }
     })
   }

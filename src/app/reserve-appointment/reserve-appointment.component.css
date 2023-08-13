@@ -196,7 +196,14 @@ input.ng-invalid.ng-touched {
   width: 80%;
   max-width: 200px;
 }
-
+.succededModal>h4{
+  margin: 0;
+  text-align: center;
+}
+.succededModal>h1{
+  margin: 0;
+  text-align: center;
+}
 @media only screen and (max-width: 900px) {
   .calendarAndTimesContainer {
     flex-direction: column;

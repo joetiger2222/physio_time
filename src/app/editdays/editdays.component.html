@@ -1,7 +1,7 @@
 <div class="editDaysContainer">
     <h1>Choose Day To Edit</h1>
     <h3>Days With Reserved Appointemnts Will Not Show Up here</h3>
-    <div class="daysToEditContainer">
+    <div class="daysToEditContainer" *ngIf="!isLoading">
         <div class="singleDoctorDayContainer" *ngFor="let day of allDoctorDays">
             <h3>Date : {{day.appointmentDay}}</h3>
             <h3>Start : {{convertTime(day.times[0])}}</h3>
@@ -12,6 +12,7 @@
             </div>
         </div>
     </div>
+    
 
 </div>
 
@@ -56,4 +57,8 @@
       </div>
       <h4 id="warningMessage"></h4>
     </div>
+  </div>
+
+  <div class="modal-overlay" id="EditDay" *ngIf="isLoading" style="display: flex;">
+    <img src="../../assets/loader2.gif" />
   </div>

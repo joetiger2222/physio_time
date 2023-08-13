@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="background">
-    <div class="appts">
+    <div class="appts" *ngIf="!isLoading">
       <div class="singleAppt" *ngFor="let appt of reservedCopy">
         <h3>{{ "Name : " + appt.patientName }}</h3>
         <h3>{{ "Email :" + appt.patientEmail }}</h3>
@@ -38,6 +38,10 @@
           Cancel
         </button>
       </div>
+    </div>
+    <div class="appts" *ngIf="isLoading">
+      <img src="../../assets//loader2.gif" />
+      
     </div>
   </div>
 </div>

@@ -6,7 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-reserve-appointment',
   templateUrl: './reserve-appointment.component.html',
@@ -14,19 +13,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ReserveAppointmentComponent {
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
-  
-  doctorId:string = '';
-  timesLoading:boolean = false;
+
+  doctorId: string = '';
+  timesLoading: boolean = false;
+  isReserveingLoading: boolean = false;
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.doctorId = params['doctorId'];
     });
-    
   }
   mySingleDayData!: singleDay;
 
   date: string = '';
-  choosenTime:string='';
+  choosenTime: string = '';
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
@@ -49,7 +48,7 @@ export class ReserveAppointmentComponent {
     },
   };
 
-  openModal(time:string) {
+  openModal(time: string) {
     this.choosenTime = time;
     console.log(this.choosenTime);
     const modalDiv = document.getElementById('myModal');
@@ -67,14 +66,14 @@ export class ReserveAppointmentComponent {
 
   openSuccedessModal() {
     const modalDiv = document.getElementById('succededModal');
-    if (modalDiv!= null) {
+    if (modalDiv != null) {
       modalDiv.style.display = 'flex';
     }
   }
 
   closeSuccedessModal() {
     const modalDiv = document.getElementById('succededModal');
-    if (modalDiv!= null) {
+    if (modalDiv != null) {
       modalDiv.style.display = 'none';
     }
     this.getAvaibleAppts(this.date);
@@ -83,75 +82,78 @@ export class ReserveAppointmentComponent {
   getAvaibleAppts(date: string) {
     this.timesLoading = true;
     this.mySingleDayData = {} as singleDay;
-     this.http
+    this.http
       .get<singleDay>(
         `https://physiotime-001-site1.atempurl.com/api/Doctors/DoctoryDays/${this.doctorId}/${date}`
-      ).subscribe({
+      )
+      .subscribe({
         // next:res=>res.times.length>0?this.mySingleDayData=res:null,
-        next:res=>{
-          this.timesLoading=false
-          if(res.times.length>0){
-            this.mySingleDayData=res;
-          }else {
-            null
+        next: (res) => {
+          this.timesLoading = false;
+          if (res.times.length > 0) {
+            this.mySingleDayData = res;
+          } else {
+            null;
           }
         },
-        error:err=>{
-          this.timesLoading=false
+        error: (err) => {
+          this.timesLoading = false;
           console.log(err);
-        }
-      })
+        },
+      });
   }
 
   onSubmit(elemet: NgForm) {
-    const body={
-      date:this.date,
-      time:this.choosenTime,
-      doctorId:this.doctorId,
-      patientName:elemet.value.name,
-      patientMobileNo:elemet.value.phoneNumber,
-      patientEmail:elemet.value.email,
-      patientAge:22
-    }
-    this.http.post('https://physiotime-001-site1.atempurl.com/api/Appointments/Reservation',body).subscribe({
-      next:res=>{
-        console.log(res);
-        this.closeModal();
-        this.openSuccedessModal();
-      },
-      error:err=>console.log(err.error)
-    })
+    this.isReserveingLoading = true;
+    const body = {
+      date: this.date,
+      time: this.choosenTime,
+      doctorId: this.doctorId,
+      patientName: elemet.value.name,
+      patientMobileNo: elemet.value.phoneNumber,
+      patientEmail: elemet.value.email,
+      patientAge: 22,
+    };
+    this.http
+      .post(
+        'https://physiotime-001-site1.atempurl.com/api/Appointments/Reservation',
+        body
+      )
+      .subscribe({
+        next: (res) => {
+          this.isReserveingLoading = false;
+          console.log(res);
+          this.closeModal();
+          this.openSuccedessModal();
+        },
+        error: (err) => {
+          console.log(err.error);
+          this.isReserveingLoading = false;
+        },
+      });
   }
 
-
-
-
-convertTimeToNumber(time:any){
-  const hours:number=Number(time.slice(0,2));
-    if(hours*1>12){
-      return hours-12+':00 PM';
+  convertTimeToNumber(time: any) {
+    const hours: number = Number(time.slice(0, 2));
+    if (hours * 1 > 12) {
+      return hours - 12 + ':00 PM';
     }
-    return hours*1+':00'+' AM';
- 
-}
-
-
-isTimeAvailble(time:any){
-  const hours:number=Number(time.slice(0,2));
-  const date=new Date
-  const currentHour:number=Number(date.toString().slice(16,18));
-  if(date.toISOString().slice(0,10)===this.date){
-    if(currentHour+3>hours){
-      return false
-    }else {
-      return true;
-    }
+    return hours * 1 + ':00' + ' AM';
   }
-  return true;
-  
-}
 
-
+  isTimeAvailble(time: any) {
+    const hours: number = Number(time.slice(0, 2));
+    const date = new Date();
+    const currentHour: number = Number(date.toString().slice(16, 18));
+    if (date.toISOString().slice(0, 10) === this.date) {
+      if (currentHour + 3 > hours) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+    return true;
+  }
 }
 
 interface singleDay {

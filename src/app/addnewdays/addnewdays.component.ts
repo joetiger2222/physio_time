@@ -14,6 +14,7 @@ export class AddnewdaysComponent {
   choosenDate:string="";
   startTime:number=0;
   endTime:number=0;
+  isLoading:boolean=false;
   constructor(private route:ActivatedRoute,private http:HttpClient){}
   ngOnInit(){
     this.route.params.subscribe(params=>{
@@ -50,12 +51,14 @@ export class AddnewdaysComponent {
   
 
   addForDay(){
+    this.isLoading=true;
     if(this.startTime<=0){
       const el=document.getElementById('warningMessage');
       if(el!==null){
         el.innerHTML="Please Enter A Valid Start Time";
         el.style.display="block";
       }
+      this.isLoading=false;
       return;
     }
     if(this.endTime<=0||this.endTime<=this.startTime){
@@ -64,6 +67,7 @@ export class AddnewdaysComponent {
         el.innerHTML="Please Enter A Valid End Time";
         el.style.display="block";
       }
+      this.isLoading=false;
       return;
     }
     const body={
@@ -77,6 +81,7 @@ export class AddnewdaysComponent {
     console.log(body);
     this.http.post(`https://physiotime-001-site1.atempurl.com/api/Doctors/DoctorDays?doctorId=${this.doctorId}`,arr).subscribe({
       next:res=>{
+        this.isLoading=false;
         console.log(res);
         const el=document.getElementById('warningMessage');
         if(el!==null){
@@ -87,6 +92,7 @@ export class AddnewdaysComponent {
       },
       error:err=>{
         console.log(err);
+        this.isLoading=false;
         const el=document.getElementById('warningMessage');
         if(el!==null){
           el.innerHTML='You Already Have Appointments In This Date If You Wish To Edit Please Go To Edit Appointments'
@@ -98,12 +104,14 @@ export class AddnewdaysComponent {
   }
 
   addForTheMonth(){
+    this.isLoading=true;
     if(this.startTime<=0){
       const el=document.getElementById('warningMessage');
       if(el!==null){
         el.innerHTML="Please Enter A Valid Start Time";
         el.style.display="block";
       }
+      this.isLoading=false;
       return;
     }
     if(this.endTime<=0||this.endTime<=this.startTime){
@@ -112,6 +120,7 @@ export class AddnewdaysComponent {
         el.innerHTML="Please Enter A Valid End Time";
         el.style.display="block";
       }
+      this.isLoading=false;
       return;
     }
     var arr=[];
@@ -138,6 +147,7 @@ export class AddnewdaysComponent {
     this.http.post(`https://physiotime-001-site1.atempurl.com/api/Doctors/DoctorDays?doctorId=${this.doctorId}`,arr).subscribe({
       next:res=>{
         console.log(res);
+        this.isLoading=false;
         const el=document.getElementById('warningMessage');
         if(el!==null){
           el.innerHTML='Appointements Added Successfully';
@@ -146,6 +156,7 @@ export class AddnewdaysComponent {
         }
       },
       error:err=>{
+        this.isLoading=false;
         console.log(err);
         const el=document.getElementById('warningMessage');
         if(el!==null){
