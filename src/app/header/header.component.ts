@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
+ngOnInit() {
+  const data=0;
+  console.log(`ngOnInit ~ data:`, data)
+ 
+}
 }

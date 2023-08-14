@@ -21,7 +21,7 @@ h4{
   row-gap: 5px;
 }
 .headerNumberContainer > h4 {
-  color: rgb(71, 128, 21);
+  color: black;
   display: flex;
   align-items: center;
 }

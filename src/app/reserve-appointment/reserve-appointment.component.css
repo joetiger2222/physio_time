@@ -129,11 +129,16 @@
   background-color: white;
   border-radius: 10px;
   row-gap: 20px;
+  /* padding: 20px; */
+
+}
+.ReserveModal>h1{
   padding: 20px;
 }
 h1,
 h3 {
   margin: 0;
+
 }
 .ReserveModalInputContainer {
   display: flex;
@@ -159,15 +164,33 @@ h3 {
 
 .cancelModal {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
   width: 80%;
-  max-width: 200px;
+  max-width: 150px;
   height: 40px;
-  border-radius: 10px;
+  /* padding: 8px; */
+  /* border-radius: 10px; */
   border: none;
   cursor: pointer;
   color: white;
   background-color: rgb(174, 6, 6);
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 60px;
+}
+.cancelModalCancelButton{
+  font-weight: bold;
+  font-size: 20px;
+  width: 80%;
+  max-width: 150px;
+  height: 40px;
+  /* padding: 8px; */
+  /* border-radius: 10px; */
+  border: none;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(174, 6, 6);
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 60px;
 }
 .cancelSubmitModalContainer {
   display: flex;
@@ -175,7 +198,7 @@ h3 {
   width: 100%;
   column-gap: 10px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 input.ng-invalid.ng-touched {
   border: 1px solid red !important;
@@ -247,6 +270,15 @@ input.ng-invalid.ng-touched {
   flex-direction: column-reverse;
   row-gap: 20px;
 }
+.cancelModalCancelButton{
+  border-radius: 10px;
+}
+.cancelModal{
+  border-radius: 10px;
+}
+.ReserveModal{
+  padding: 20px;
+}
 .cancelSubmitModalContainer>button{
   width: 50%;
   height: 30px;
@@ -254,6 +286,8 @@ input.ng-invalid.ng-touched {
   font-weight: normal;
 }
 }
+
+
 
 /* colors */
 /* green rgb(107, 195, 32); */

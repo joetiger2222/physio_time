@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CalendarOptions, EventClickArg } from '@fullcalendar/core'; // useful for typechecking
+import { CalendarOptions } from '@fullcalendar/core'; // useful for typechecking
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { ActivatedRoute } from '@angular/router';

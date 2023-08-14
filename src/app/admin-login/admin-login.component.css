@@ -30,9 +30,9 @@
     width: 80%;
     color: rgb(63, 114, 18);;
     max-width: 400px;
-    background-color: white;
+    /* background-color: white; */
     border-radius: 10px;
-    border: 2px solid rgb(76, 138, 21);
+    /* border: 2px solid rgb(76, 138, 21); */
     padding: 20px;
 }
 
