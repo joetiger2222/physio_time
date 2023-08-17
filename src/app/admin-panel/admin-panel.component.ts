@@ -12,7 +12,7 @@ export class AdminPanelComponent {
   appointmentId: string = '';
   reservedAppointments: Appointment[] = [];
   reservedCopy: Appointment[] = [];
-  isLoading:boolean = false;
+  isLoading: boolean = false;
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -23,20 +23,30 @@ export class AdminPanelComponent {
   }
 
   getReservedAppointements() {
-    this.isLoading=true;
+    this.isLoading = true;
     this.http
       .get<Appointment[]>(
         `https://physiotime-001-site1.atempurl.com/api/Appointments/ReservedAppointments/${this.doctorId}`
       )
       .subscribe({
         next: (res) => {
-          this.reservedAppointments = res;
-          this.reservedCopy=res;  
-          this.isLoading=false
+          const date = new Date();
+          const year = date.getFullYear();
+          const month = date.getMonth() + 1;
+          const day = date.getDate();
+          const filtered = res.filter(
+            (appts) =>
+              Number(appts.date.slice(8, 10)) >= day &&
+              Number(appts.date.slice(5, 7)) >= month &&
+              Number(appts.date.slice(0, 4)) >= year
+          );
+          this.reservedAppointments = filtered;
+          this.reservedCopy = filtered;
+          this.isLoading = false;
         },
         error: (err) => {
           console.log(err);
-          this.isLoading=false
+          this.isLoading = false;
         },
       });
   }
@@ -47,18 +57,16 @@ export class AdminPanelComponent {
     this.reservedCopy = filtered;
   }
 
-
-
   convertTime(time: any) {
     const hour: number = time.slice(0, 2) * 1;
     if (hour > 12) {
       return hour - 12 + ':00 PM';
     } else return hour + ':00 AM';
   }
-  convertPhoneNumber(phoneNumber:string){
-    if(phoneNumber.slice(0,2)==='+2'){
+  convertPhoneNumber(phoneNumber: string) {
+    if (phoneNumber.slice(0, 2) === '+2') {
       return phoneNumber.slice(2);
-    }else return phoneNumber;
+    } else return phoneNumber;
   }
 
   openCancelModal(appointmentId: string) {

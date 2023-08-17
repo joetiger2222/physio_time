@@ -1,6 +1,6 @@
 <div class="adminLoginContainer">
     
-    <div *ngIf="!isLoading" class="loginDiv">
+    <div class="loginDiv">
         <h1>Login</h1>
     
 
@@ -17,7 +17,7 @@
 
     </div>
 </div>
-<div *ngIf="isLoading" class="loadingDiv">
+<div *ngIf="isLoading" class="modal-overlay">
     <img src="../../assets/loader2.gif" />
 </div>
 </div>
