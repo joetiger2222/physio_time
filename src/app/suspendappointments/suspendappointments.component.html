@@ -1,0 +1,67 @@
+<div class="calendarContainer">
+    <div class="calendarAndTimesContainer">
+      <div class="calendar">
+        <full-calendar
+          style="width: 100% "
+          [options]="calendarOptions"
+        ></full-calendar>
+      </div>
+      <div *ngIf="!timesLoading" class="timesContainer">
+        <h1 *ngIf="mySingleDayData?.doctorId">Choose Time In {{ date }}</h1>
+        <h3 *ngIf="date===''">Select Date To View Available Times</h3>
+        <h3 *ngIf="date!=='' && mySingleDayData?.doctorId===undefined">No Available Times In {{this.date}}</h3>
+        <div class="times" *ngIf="mySingleDayData?.times">
+          <ng-container *ngFor="let time of mySingleDayData.times">
+          <h1 class="time" *ngIf="isTimeAvailble(time)" (click)="openModal(time)">
+            {{convertTimeToNumber(time)}}
+          </h1>
+        </ng-container>
+        </div>
+      </div>
+      <div *ngIf="timesLoading" class="timesContainer">
+        <img src="../../assets/loader2.gif" />
+      </div>
+    </div>
+  
+    <div class="modal-overlay" id="myModal">
+      <div class="ReserveModal" style="padding-top: 10px;">
+        <h3 style="text-align: center;">Are You Sure You Want To Suspend This Appointment</h3>
+        
+       
+        
+        <div class="cancelSubmitModalContainer">
+          <button class="cancelModalCancelButton" (click)="closeModal()" type="button">Cancel</button>
+          <button
+            class="cancelModal"
+            style="background-color: rgb(82, 147, 25)"
+            (click)="onSubmit()"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="modal-overlay" id="succededModal">
+      <div class="succededModal" >
+        <img src="../../assets/checked.png" />
+        <h1>Time Suspended Successfully</h1>
+        <button (click)="closeSuccedessModal()" class="cancelModal" style="border-radius: 10px;">Close</button>
+        </div>
+        
+          
+        
+      
+    </div>
+  
+    <div class="modal-overlay" style="display: flex;" *ngIf="isReserveingLoading">
+      
+        <img src="../../assets/loader2.gif" />
+     
+    </div>
+  
+  
+  
+  </div>
+  

@@ -16,6 +16,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {HttpClientModule} from '@angular/common/http';
 import { AddnewdaysComponent } from './addnewdays/addnewdays.component';
 import { EditdaysComponent } from './editdays/editdays.component';
+import { SuspendappointmentsComponent } from './suspendappointments/suspendappointments.component';
 
 
 const appRoute: Routes = [
@@ -26,6 +27,7 @@ const appRoute: Routes = [
   { path: 'ReserveAppointment/:doctorId', component: ReserveAppointmentComponent },
   {path:'AddNewDays/:doctorId',component:AddnewdaysComponent},
   {path:'EditDays/:doctorId',component: EditdaysComponent},
+  {path:'SuspendAppointments/:doctorId',component: SuspendappointmentsComponent},
 ];
 
 @NgModule({
@@ -40,6 +42,7 @@ const appRoute: Routes = [
     ChooseyourdoctorComponent,
     AddnewdaysComponent,
     EditdaysComponent,
+    SuspendappointmentsComponent,
 
   ],
   imports: [

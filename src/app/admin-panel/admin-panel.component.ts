@@ -38,7 +38,9 @@ export class AdminPanelComponent {
             (appts) =>
               Number(appts.date.slice(8, 10)) >= day &&
               Number(appts.date.slice(5, 7)) >= month &&
-              Number(appts.date.slice(0, 4)) >= year
+              Number(appts.date.slice(0, 4)) >= year &&
+              appts.patientName!=='8' &&
+              appts.patientMobileNo!=='8'
           );
           this.reservedAppointments = filtered;
           this.reservedCopy = filtered;
