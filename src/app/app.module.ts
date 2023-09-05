@@ -17,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { AddnewdaysComponent } from './addnewdays/addnewdays.component';
 import { EditdaysComponent } from './editdays/editdays.component';
 import { SuspendappointmentsComponent } from './suspendappointments/suspendappointments.component';
+import { ViewsuspendedtimesComponent } from './viewsuspendedtimes/viewsuspendedtimes.component';
 
 
 const appRoute: Routes = [
@@ -28,6 +29,7 @@ const appRoute: Routes = [
   {path:'AddNewDays/:doctorId',component:AddnewdaysComponent},
   {path:'EditDays/:doctorId',component: EditdaysComponent},
   {path:'SuspendAppointments/:doctorId',component: SuspendappointmentsComponent},
+  {path:'ViewSuspendedTimes/:doctorId',component: ViewsuspendedtimesComponent},
 ];
 
 @NgModule({
@@ -43,6 +45,7 @@ const appRoute: Routes = [
     AddnewdaysComponent,
     EditdaysComponent,
     SuspendappointmentsComponent,
+    ViewsuspendedtimesComponent,
 
   ],
   imports: [

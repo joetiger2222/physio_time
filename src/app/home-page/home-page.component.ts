@@ -7,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
   arr = [
-    // '../../assets/11.jpeg',
     '../../assets/6.png',
-    '../../assets/3.jpeg',
-    '../../assets/4.jpeg',
+    '../../assets/9.jpeg',
+    // '../../assets/10.jpeg',
     '../../assets/2.jpeg',
-    '../../assets/7.jpeg',
+    '../../assets/14.jpeg',
+    // '../../assets/11.jpeg',
+    '../../assets/12.jpeg',
+    '../../assets/13.jpeg',
     '../../assets/5.jpeg',
   ];
   
