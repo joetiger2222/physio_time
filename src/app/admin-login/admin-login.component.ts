@@ -48,7 +48,7 @@ export class AdminLoginComponent {
         el.style.display='none';
       }
     }
-    this.http.post<userIdAndToken>('https://physiotime-001-site1.atempurl.com/api/Authentication/Login',emailAndPassword.value).subscribe({
+    this.http.post<userIdAndToken>('https://joetiger123456-001-site1.atempurl.com/api/Authentication/Login',emailAndPassword.value).subscribe({
       next:res=>{
         this.isLoading=false;
         this.userData=res
