@@ -15,38 +15,47 @@ export class AddnewdaysComponent {
   startTime:number=0;
   endTime:number=0;
   isLoading:boolean=false;
+  calendarOptions!: CalendarOptions;
   constructor(private route:ActivatedRoute,private http:HttpClient){}
   ngOnInit(){
     this.route.params.subscribe(params=>{
       this.doctorId=params['doctorId'];
+      this.initializeCalendarOptions();
     })
   }
 
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth',
-    plugins: [dayGridPlugin, interactionPlugin],
-    eventColor: '#378006',
-    selectable: true,
-    validRange: {
-      start: new Date().toISOString().slice(0, 10),
-    },
-    longPressDelay: 0,
-
-    select: (info) => {
-      this.choosenDate = info.startStr
-      const el=document.getElementById('warningMessage');
-      if(el!==null){
-        
-        el.style.display="none";
-      }
-    },
-    hiddenDays: [5],
-    headerToolbar: {
-      start: 'title', // Display the title on the left
-      center: '', // Remove buttons from the center
-      end: 'prev,next', // Display only prev and next buttons on the right
-    },
-  };
+  initializeCalendarOptions() {
+    this.calendarOptions = {
+      initialView: 'dayGridMonth',
+      plugins: [dayGridPlugin, interactionPlugin],
+      eventColor: '#378006',
+      selectable: true,
+      validRange: {
+        start: new Date().toISOString().slice(0, 10),
+      },
+      longPressDelay: 0,
+  
+      select: (info) => {
+        this.choosenDate = info.startStr;
+        const el = document.getElementById('warningMessage');
+        if (el !== null) {
+          el.style.display = "none";
+        }
+      },
+      hiddenDays: this.doctorId === 'da5ec48d-0df8-4f00-92d6-e2fe6c164e29' ? [0, 2, 4, 5] : [5],
+      headerToolbar: {
+        start: 'title', // Display the title on the left
+        center: '', // Remove buttons from the center
+        end: 'prev,next', // Display only prev and next buttons on the right
+      },
+    };
+  }
+  
+  
+  
+  
+  
+  
 
   
 

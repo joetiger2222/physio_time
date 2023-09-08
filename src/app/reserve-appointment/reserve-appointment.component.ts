@@ -13,40 +13,45 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ReserveAppointmentComponent {
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
-
+  calendarOptions!: CalendarOptions;
   doctorId: string = '';
   timesLoading: boolean = false;
   isReserveingLoading: boolean = false;
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.doctorId = params['doctorId'];
+      this.initializeCalendar()
     });
   }
   mySingleDayData!: singleDay;
 
   date: string = '';
   choosenTime: string = '';
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth',
-    plugins: [dayGridPlugin, interactionPlugin],
-    eventColor: '#378006',
-    selectable: true,
-    validRange: {
-      start: new Date().toISOString().slice(0, 10),
-    },
-    longPressDelay: 0,
 
-    select: (info) => {
-      this.date = info.startStr;
-      this.getAvaibleAppts(info.startStr);
-    },
-    hiddenDays: [5],
-    headerToolbar: {
-      start: 'title', // Display the title on the left
-      center: '', // Remove buttons from the center
-      end: 'prev,next', // Display only prev and next buttons on the right
-    },
-  };
+  
+  initializeCalendar(){
+    this.calendarOptions = {
+      initialView: 'dayGridMonth',
+      plugins: [dayGridPlugin, interactionPlugin],
+      eventColor: '#378006',
+      selectable: true,
+      validRange: {
+        start: new Date().toISOString().slice(0, 10),
+      },
+      longPressDelay: 0,
+  
+      select: (info) => {
+        this.date = info.startStr;
+        this.getAvaibleAppts(info.startStr);
+      },
+      hiddenDays: this.doctorId === 'da5ec48d-0df8-4f00-92d6-e2fe6c164e29' ? [0, 2, 4, 5] : [5],
+      headerToolbar: {
+        start: 'title', // Display the title on the left
+        center: '', // Remove buttons from the center
+        end: 'prev,next', // Display only prev and next buttons on the right
+      },
+    };
+  }
 
   openModal(time: string) {
     this.choosenTime = time;
