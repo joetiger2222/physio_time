@@ -66,6 +66,9 @@
   align-items: center;
   justify-content: center;
 }
+.loeaderImage{
+  width: 200px;
+}
 .times {
   display: flex;
   flex-wrap: wrap;
