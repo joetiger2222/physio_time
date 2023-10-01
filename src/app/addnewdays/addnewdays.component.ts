@@ -88,7 +88,7 @@ export class AddnewdaysComponent {
     var arr=[];
     arr.push(body);
     console.log(body);
-    this.http.post(`https://joetiger123456-001-site1.atempurl.com/api/Doctors/DoctorDays?doctorId=${this.doctorId}`,arr).subscribe({
+    this.http.post(`https://physiotime2-001-site1.gtempurl.com/api/Doctors/DoctorDays?doctorId=${this.doctorId}`,arr).subscribe({
       next:res=>{
         this.isLoading=false;
         console.log(res);
@@ -153,7 +153,7 @@ export class AddnewdaysComponent {
       arr.push(body)
     }
     console.log(arr)
-    this.http.post(`https://joetiger123456-001-site1.atempurl.com/api/Doctors/DoctorDays?doctorId=${this.doctorId}`,arr).subscribe({
+    this.http.post(`https://physiotime2-001-site1.gtempurl.com/api/Doctors/DoctorDays?doctorId=${this.doctorId}`,arr).subscribe({
       next:res=>{
         console.log(res);
         this.isLoading=false;

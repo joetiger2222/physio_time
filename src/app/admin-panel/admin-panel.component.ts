@@ -26,7 +26,7 @@ export class AdminPanelComponent {
     this.isLoading = true;
     this.http
       .get<Appointment[]>(
-        `https://joetiger123456-001-site1.atempurl.com/api/Appointments/ReservedAppointments/${this.doctorId}`
+        `https://physiotime2-001-site1.gtempurl.com/api/Appointments/ReservedAppointments/${this.doctorId}`
       )
       .subscribe({
         next: (res) => {
@@ -88,7 +88,7 @@ export class AdminPanelComponent {
   deleteAppointment() {
     this.http
       .delete(
-        `https://joetiger123456-001-site1.atempurl.com/api/Appointments/appointmentId?appointmentId=${this.appointmentId}`
+        `https://physiotime2-001-site1.gtempurl.com/api/Appointments/appointmentId?appointmentId=${this.appointmentId}`
       )
       .subscribe({
         next: (res) => {
