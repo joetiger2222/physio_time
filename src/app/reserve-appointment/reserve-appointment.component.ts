@@ -89,7 +89,7 @@ export class ReserveAppointmentComponent {
     this.mySingleDayData = {} as singleDay;
     this.http
       .get<singleDay>(
-        `https://physiotime2-001-site1.gtempurl.com/api/Doctors/DoctoryDays/${this.doctorId}/${date}`
+        `https://physiotime5-001-site1.anytempurl.com/api/Doctors/DoctoryDays/${this.doctorId}/${date}`
       )
       .subscribe({
         // next:res=>res.times.length>0?this.mySingleDayData=res:null,
@@ -121,7 +121,7 @@ export class ReserveAppointmentComponent {
     };
     this.http
       .post(
-        'https://physiotime2-001-site1.gtempurl.com/api/Appointments/Reservation',
+        'https://physiotime5-001-site1.anytempurl.com/api/Appointments/Reservation',
         body
       )
       .subscribe({
