@@ -87,7 +87,7 @@ export class SuspendappointmentsComponent {
     this.mySingleDayData = {} as singleDay;
     this.http
       .get<singleDay>(
-        `http://physiotime778-001-site1.ftempurl.com/api/Doctors/DoctoryDays/${this.doctorId}/${date}`
+        `https://physiotime778-001-site1.ftempurl.com/api/Doctors/DoctoryDays/${this.doctorId}/${date}`
       )
       .subscribe({
         // next:res=>res.times.length>0?this.mySingleDayData=res:null,
@@ -119,7 +119,7 @@ export class SuspendappointmentsComponent {
     };
     this.http
       .post(
-        'http://physiotime778-001-site1.ftempurl.com/api/Appointments/Reservation',
+        'https://physiotime778-001-site1.ftempurl.com/api/Appointments/Reservation',
         body
       )
       .subscribe({
