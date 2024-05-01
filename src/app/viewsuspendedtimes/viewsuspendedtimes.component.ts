@@ -27,7 +27,7 @@ export class ViewsuspendedtimesComponent {
     this.isLoading = true;
     this.http
       .get<Appointment[]>(
-        `https://physiotime5-001-site1.anytempurl.com/api/Appointments/ReservedAppointments/${this.doctorId}`
+        `http://physiotime778-001-site1.ftempurl.com/api/Appointments/ReservedAppointments/${this.doctorId}`
       )
       .subscribe({
         next: (res) => {
@@ -89,7 +89,7 @@ export class ViewsuspendedtimesComponent {
   deleteAppointment() {
     this.http
       .delete(
-        `https://physiotime5-001-site1.anytempurl.com/api/Appointments/appointmentId?appointmentId=${this.appointmentId}`
+        `http://physiotime778-001-site1.ftempurl.com/api/Appointments/appointmentId?appointmentId=${this.appointmentId}`
       )
       .subscribe({
         next: (res) => {
