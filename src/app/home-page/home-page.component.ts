@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MetaPixelService } from '../services/meta-pixel.service';
 
 @Component({
   selector: 'app-home-page',
@@ -21,6 +22,8 @@ export class HomePageComponent implements OnInit {
   currentIndex = 0;
   currentImage: string='';
 
+  constructor(private metaPixelService:MetaPixelService){}
+
    ngOnInit()  {
     // Initialize the current image
     this.currentImage = this.arr[this.currentIndex];
@@ -32,4 +35,15 @@ export class HomePageComponent implements OnInit {
     }, 2000);
     
   }
+
+  trackClick(){
+    this.metaPixelService.trackCustomEvent('ViewContent', {
+      content_name: 'Product Name',
+      content_ids: ['PRODUCT_ID'],
+      content_type: 'product',
+      value: 100.00,
+      currency: 'USD'
+    });
+  }
+
 }
