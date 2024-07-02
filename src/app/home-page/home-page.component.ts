@@ -37,13 +37,7 @@ export class HomePageComponent implements OnInit {
   }
 
   trackClick(){
-    this.metaPixelService.trackCustomEvent('buy', {
-      content_name: 'Product Name',
-      content_ids: ['PRODUCT_ID'],
-      content_type: 'product',
-      value: 100.00,
-      currency: 'USD'
-    });
+    this.metaPixelService.trackCustomEvent('testeventparamters',{productName:'test pramas'});
   }
 
 }
