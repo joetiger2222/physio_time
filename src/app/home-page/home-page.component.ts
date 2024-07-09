@@ -25,6 +25,7 @@ export class HomePageComponent implements OnInit {
   constructor(private metaPixelService:MetaPixelService){}
 
    ngOnInit()  {
+    console.log('refferal',document.referrer);
     // Initialize the current image
     this.currentImage = this.arr[this.currentIndex];
     
