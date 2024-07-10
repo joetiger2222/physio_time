@@ -59,7 +59,8 @@ export class HomePageComponent implements OnInit {
               },
               "custom_data": {
                   "currency": "USD",
-                  "value": "142.52"
+                  "value": "142.52",
+                  "refrrer":localStorage.getItem('reffreal')
               }
           
       
