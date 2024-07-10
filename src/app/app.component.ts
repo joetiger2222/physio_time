@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'physio_time';
+  ngOnInit() {
+    console.log('refferal',document.referrer);
+    localStorage.setItem('reffreal',document.referrer)
+  }
 }
