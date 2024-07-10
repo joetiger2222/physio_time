@@ -43,18 +43,27 @@ export class HomePageComponent implements OnInit {
 
   sendConversion(){
     console.log('send conversion happened');
-    const eventData = {
-      event_name: 'Purchase',
-      event_time: Math.floor(new Date().getTime() / 1000),
-      user_data: {
-        em: 'hashed_email',
-        ph: 'hashed_phone'
-      },
-      custom_data: {
-        currency: 'USD',
-        value: 123.45
-      }
-    };
+    const eventData=
+       
+          {
+              "event_name": "Purchase",
+              "event_time": 1720604353,
+              "action_source": "website",
+              "user_data": {
+                  "em": [
+                      "7b17fb0bd173f625b58636fb796407c22b3d16fc78302d79f0fd30c2fc2fc068"
+                  ],
+                  "ph": [
+                      null
+                  ]
+              },
+              "custom_data": {
+                  "currency": "USD",
+                  "value": "142.52"
+              }
+          
+      
+  }
     this.metaPixelService.sendEvent(eventData).subscribe(response => {
       console.log('Event sent successfully', response);
     }, error => {
