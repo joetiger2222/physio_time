@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MetaPixelService } from '../services/meta-pixel.service';
 
@@ -22,10 +23,9 @@ export class HomePageComponent implements OnInit {
   currentIndex = 0;
   currentImage: string='';
 
-  constructor(private metaPixelService:MetaPixelService){}
+  constructor(private metaPixelService:MetaPixelService,private HttpClient:HttpClient){}
 
    ngOnInit()  {
-    
     // Initialize the current image
     this.currentImage = this.arr[this.currentIndex];
     
@@ -39,6 +39,28 @@ export class HomePageComponent implements OnInit {
 
   trackClick(){
     this.metaPixelService.trackCustomEvent('testeventparamters',{productName:'test pramas'});
+  }
+
+  sendConversion(){
+    console.log('send conversion happened');
+    const eventData = {
+      event_name: 'Purchase',
+      event_time: Math.floor(new Date().getTime() / 1000),
+      user_data: {
+        em: 'hashed_email',
+        ph: 'hashed_phone'
+      },
+      custom_data: {
+        currency: 'USD',
+        value: 123.45
+      }
+    };
+    this.metaPixelService.sendEvent(eventData).subscribe(response => {
+      console.log('Event sent successfully', response);
+    }, error => {
+      console.error('Error sending event', error);
+    });
+  
   }
 
 }
