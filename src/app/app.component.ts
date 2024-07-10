@@ -10,5 +10,6 @@ export class AppComponent {
   ngOnInit() {
     console.log('refferal',document.referrer);
     localStorage.setItem('reffreal',document.referrer)
+    localStorage.setItem('hello','test localstorage')
   }
 }
