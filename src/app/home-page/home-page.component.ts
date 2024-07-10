@@ -46,7 +46,7 @@ export class HomePageComponent implements OnInit {
     const eventData=
        
           {
-              "event_name": "Purchase",
+              "event_name": "custom conversion",
               "event_time": 1720604353,
               "action_source": "website",
               "user_data": {
