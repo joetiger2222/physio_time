@@ -23,7 +23,7 @@ constructor(private http: HttpClient,private route:ActivatedRoute) { }
   }
 
   getDoctorDays(appts:Appointment[]){
-    this.http.get<DoctorDay[]>('https://physiotime778-001-site1.ftempurl.com/api/Doctors/DoctorDays/'+this.doctorId).subscribe({
+    this.http.get<DoctorDay[]>('https://physiotime7788-001-site1.ftempurl.com/api/Doctors/DoctorDays/'+this.doctorId).subscribe({
       next:res=>{
         const filtered = res.filter(day => !appts.some(appt => appt.date === day.appointmentDay));
         this.allDoctorDays=filtered;
@@ -40,7 +40,7 @@ constructor(private http: HttpClient,private route:ActivatedRoute) { }
     this.isLoading=true;
     this.http
       .get<Appointment[]>(
-        `https://physiotime778-001-site1.ftempurl.com/api/Appointments/ReservedAppointments/${this.doctorId}`
+        `https://physiotime7788-001-site1.ftempurl.com/api/Appointments/ReservedAppointments/${this.doctorId}`
       )
       .subscribe({
         next: (res) => {
@@ -79,7 +79,7 @@ constructor(private http: HttpClient,private route:ActivatedRoute) { }
 
   DeleteDay(){
     this.isLoading=true
-    this.http.delete(`https://physiotime778-001-site1.ftempurl.com/api/Doctors/DoctorDay/${this.choosenDayId}`).subscribe({
+    this.http.delete(`https://physiotime7788-001-site1.ftempurl.com/api/Doctors/DoctorDay/${this.choosenDayId}`).subscribe({
       next:res=>{
         this.isLoading=false
         this.getReservedAppointements();
@@ -129,7 +129,7 @@ constructor(private http: HttpClient,private route:ActivatedRoute) { }
       start:this.startTime<10?'0'+this.startTime+':00:00': this.startTime+':00:00',
       end:this.endTime<10?'0'+this.endTime+':00:00':this.endTime+':00:00'
     }
-    this.http.put(`https://physiotime778-001-site1.ftempurl.com/api/Doctors/DoctorDays/${this.choosenDayId}`,body).subscribe({
+    this.http.put(`https://physiotime7788-001-site1.ftempurl.com/api/Doctors/DoctorDays/${this.choosenDayId}`,body).subscribe({
       next:res=>{
         this.isLoading=false
         this.getReservedAppointements();
