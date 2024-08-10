@@ -64,6 +64,7 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 7px 20px 8px 0 rgba(0, 0, 0, 0.2), 4px -3px 20px 0 rgba(0, 0, 0, 0.19);
+    line-break: anywhere;
 }
 h3{
     margin: 0;
