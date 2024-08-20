@@ -9,9 +9,10 @@ export class ChooseyourdoctorComponent {
 
   ngOnInit(){
     const value = localStorage.getItem('hello');
+    console.log('value from iframe',value)
 
     // Send the localStorage value to the parent
-    window.parent.postMessage(value);
+    window.parent.postMessage(value,'http://localhost:4200');
   }
 
 
