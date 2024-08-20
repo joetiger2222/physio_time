@@ -6,6 +6,15 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
   styleUrls: ['./chooseyourdoctor.component.css']
 })
 export class ChooseyourdoctorComponent {
+
+  ngOnInit(){
+    const value = localStorage.getItem('hello');
+
+    // Send the localStorage value to the parent
+    window.parent.postMessage(value);
+  }
+
+
   openModal(){
     const modalDiv=document.getElementById('myModal');
     if(modalDiv!=null){
