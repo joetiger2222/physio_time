@@ -9,6 +9,7 @@ export class ChooseyourdoctorComponent {
 
   ngOnInit(){
     window.addEventListener('message', (message) => {
+      console.log('message recieved from iframe',message)
         const data = JSON.parse(message.data);
         const { userId } = data;
         if (userId){
