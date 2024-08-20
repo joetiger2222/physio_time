@@ -8,11 +8,14 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 export class ChooseyourdoctorComponent {
 
   ngOnInit(){
-    const value = localStorage.getItem('hello');
-    console.log('value from iframe',value)
-
-    // Send the localStorage value to the parent
-    window.parent.postMessage(value,'http://localhost:4200');
+    window.addEventListener('message', (message) => {
+        const data = JSON.parse(message.data);
+        const { userId } = data;
+        if (userId){
+          localStorage.setItem('userId', userId);
+        }
+      
+    });
   }
 
 
