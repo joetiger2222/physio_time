@@ -29,7 +29,7 @@ ngOnInit() {
 
 
   sendMessageToParent(){
-    window.parent.postMessage({ key: 'responseKeyFromIframe', value: 'responseValueFromIframe' },);  // Adjust the origin as needed
+    window.parent.postMessage({ key: 'responseKeyFromIframe', value: 'responseValueFromIframe' }, 'http://localhost:4200');  // Adjust the origin as needed
   }
 
 
