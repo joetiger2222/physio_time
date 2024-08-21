@@ -7,15 +7,18 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 })
 export class ChooseyourdoctorComponent {
 
-  ngOnInit(){
-    window.addEventListener('message', (message) => {
-      console.log('message recieved from iframe',message)
-        const data = JSON.parse(message.data);
-        const { userId } = data;
-        if (userId){
-          localStorage.setItem('userId', userId);
+
+
+ngOnInit() {
+  console.log('on init happened from iframe')
+    window.addEventListener('message', (event) => {
+      console.log('event from iframe',event)
+      if (event.origin === 'http://localhost') {  // Adjust the origin as needed
+        const { key, value } = event.data;
+        if (key && value) {
+          localStorage.setItem(key, value);
         }
-      
+      }
     });
   }
 
