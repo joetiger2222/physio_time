@@ -12,7 +12,7 @@ export class ChooseyourdoctorComponent {
 ngOnInit() {
   console.log('on init happened from iframe')
     window.addEventListener('message', (event) => {
-      console.log('event from iframe',event)
+      console.log('event from iframe',event.data.key)
       if (event.origin === 'http://localhost:4200') {  // Adjust the origin as needed
         const { key, value } = event.data;
         if (key && value) {
@@ -29,7 +29,7 @@ ngOnInit() {
 
 
   sendMessageToParent(){
-    window.parent.postMessage({ key: 'responseKeyFromIframe', value: 'responseValueFromIframe' }, 'http://localhost:4200');  // Adjust the origin as needed
+    window.parent.postMessage({ key: 'responseKeyFromIframe', value: 'responseValueFromIframe' },);  // Adjust the origin as needed
   }
 
 
