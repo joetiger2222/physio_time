@@ -6,11 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'physio_time';
-
-  ngOnInit() {
-    console.log('refferal',document.referrer);
-    localStorage.setItem('reffreal',document.referrer)
+  constructor(){
     window.addEventListener('message', (event) => {
       console.log('event from iframe',event)
       if (event.origin === 'http://localhost:4200') {  // Adjust the origin as needed
@@ -20,5 +16,12 @@ export class AppComponent {
         }
       }
     });
+  }
+  title = 'physio_time';
+
+  ngOnInit() {
+    console.log('refferal',document.referrer);
+    localStorage.setItem('reffreal',document.referrer)
+    
   }
 }
