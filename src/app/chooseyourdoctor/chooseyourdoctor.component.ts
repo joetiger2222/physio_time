@@ -11,15 +11,7 @@ export class ChooseyourdoctorComponent {
 
 ngOnInit() {
   console.log('on init happened from iframe')
-    window.addEventListener('message', (event) => {
-      console.log('event from iframe',event)
-      if (event.origin === 'http://localhost:4200') {  // Adjust the origin as needed
-        const { key, value } = event.data;
-        if (key && value) {
-          localStorage.setItem(key, value);
-        }
-      }
-    });
+    
   }
 
 
