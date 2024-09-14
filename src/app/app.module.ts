@@ -18,7 +18,7 @@ import { AddnewdaysComponent } from './addnewdays/addnewdays.component';
 import { EditdaysComponent } from './editdays/editdays.component';
 import { SuspendappointmentsComponent } from './suspendappointments/suspendappointments.component';
 import { ViewsuspendedtimesComponent } from './viewsuspendedtimes/viewsuspendedtimes.component';
-
+import { SwiperModule } from 'swiper/angular';
 
 const appRoute: Routes = [
   { path: '', component: HomePageComponent },
@@ -56,7 +56,7 @@ const appRoute: Routes = [
     FullCalendarModule,
     MatDialogModule,
     HttpClientModule,
-
+    SwiperModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

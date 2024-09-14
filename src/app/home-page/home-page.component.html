@@ -1,46 +1,49 @@
 <div class="homePageContainer">
   <app-header />
   <div style="position: relative">
-    
-      <!-- <img class="landingImg" [src]="currentImage" id="landingImg" /> -->
+    <!-- <img class="landingImg" [src]="currentImage" id="landingImg" /> -->
 
-      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="2000">
-            <img src="../../assets/6.png" class="landingImg" alt="...">
-          </div>
-          <!-- <div class="carousel-item" data-bs-interval="3000">
+    <div
+      id="carouselExampleInterval"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="2000">
+          <img src="../../assets/6.png" class="landingImg" alt="..." />
+        </div>
+        <!-- <div class="carousel-item" data-bs-interval="3000">
             <img src="../../assets/9.png" style="height: 960px;" class="landingImg" alt="...">
           </div> -->
-          <div class="carousel-item" data-bs-interval="2000">
-            <img src="../../assets/2.jpeg" class="landingImg" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="2000">
-            <img src="../../assets/14.jpeg" class="landingImg" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="2000">
-            <img src="../../assets/12.jpeg" class="landingImg" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="2000">
-            <img src="../../assets/13.jpeg" class="landingImg" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="2000">
-            <img src="../../assets/5.jpeg" class="landingImg" alt="...">
-          </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../assets/2.jpeg" class="landingImg" alt="..." />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../assets/14.jpeg" class="landingImg" alt="..." />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../assets/12.jpeg" class="landingImg" alt="..." />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../assets/13.jpeg" class="landingImg" alt="..." />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../assets/5.jpeg" class="landingImg" alt="..." />
         </div>
       </div>
+    </div>
 
     <div class="landingImgContainer">
       <h1>Regain Balance In Your Life</h1>
       <h5>Offering The Best PhysioTherapy In Egypt</h5>
-      <button routerLink="/ChooseYourDoctor" class="landingImgButton">
-        Book An Appointment
-      </button>
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0d5i1zvNP8jUAJuTA370LZvOispcpTjr8Cun6hTDeVCNQ--bsMPIPt4MdzmsPOtI8UAGgO_xF5" class="landingImgButton">
+        Reserve Now
+      </a>
 
       <a
         target="_blank"
         class="landingImgButton"
-        href="https://maps.app.goo.gl/DDzoNKWtVWnj8HsY8"
+        href="https://www.google.com/maps/place/Physio-Time+clinic/@30.0071866,31.4279014,17z/data=!3m1!4b1!4m6!3m5!1s0x14583d522fd81465:0x4d82a19eaeab9bc9!8m2!3d30.0071866!4d31.4304817!16s%2Fg%2F11vbsvydmd!5m1!1e2?entry=ttu&g_ep=EgoyMDI0MDkxMS4wIKXMDSoASAFQAw%3D%3D"
         >Get Directions</a
       >
     </div>
@@ -102,13 +105,15 @@
       </div>
     </div>
   </div>
-  <div class="homePageImgLeftTextRightContainer">
+
+  
+  <!-- <div class="homePageImgLeftTextRightContainer">
     <div class="homePageImgLeftCotainer">
       <img src="../../assets/square.png" />
     </div>
 
     <div class="homePageTextRightCotainer">
-      <h1 style="font-weight: bold; font-size: 30px;text-align: center;">
+      <h1 style="font-weight: bold; font-size: 30px; text-align: center">
         You Have Access To The Best Care
       </h1>
       <br />
@@ -127,67 +132,80 @@
         able to accommodate many patients with very little wait time.
       </span>
     </div>
-  </div>
-
- 
-      <div class="overTextContainerOtherInnerDiv">
-        <div class="overLayTextSelf">
-          <h1>What's Getting In Your Way</h1>
-          <p>
-            Don’t let a painful condition or injury keep you from living your
-            best life! Our treatment plans are individualized and aimed toward
-            the achievement of your goals.
-          </p>
-          <p>
-            When you arrive, one of our team will design
-            a treatment plan just for you, taking into account your symptoms,
-            medical history, and any health restrictions you may have.
-          </p>
-        </div>
-        <div class="otherLandingImageIconsContainer">
-          <div class="otherLandingImageIcon">
-            <div class="iconImageContainer">
-              <img src="../../assets/backpain.png" />
-            </div>
-            <span>Back Pain</span>
-          </div>
-          <div class="otherLandingImageIcon">
-            <div class="iconImageContainer">
-              <img src="../../assets/neckpain.png" />
-            </div>
-            <span>Neck Pain</span>
-          </div>
-          <div class="otherLandingImageIcon">
-            <div class="iconImageContainer">
-              <img src="../../assets/shoulderpain.png" />
-            </div>
-            <span>Shoulder Pain</span>
-          </div>
-          <div class="otherLandingImageIcon">
-            <div class="iconImageContainer">
-              <img src="../../assets/kneepain.png" />
-            </div>
-            <span>Knee Pain</span>
-          </div>
-          <div class="otherLandingImageIcon">
-            <div class="iconImageContainer">
-              <img src="../../assets/sportsinjuries.png" />
-            </div>
-            <span>Sports Injuries</span>
-          </div>
-          <div class="otherLandingImageIcon">
-            <div class="iconImageContainer">
-              <img src="../../assets/footankle.png" />
-            </div>
-            <span>Foot & Ankle Pain</span>
-          </div>
-</div>
-        
+  </div> -->
+  <div class="d-flex flex-column align-items-center w-100 mt-5 mb-5">
+    <h1 class="fw-bold mb-5 mt-3">Our Heroes 💪</h1>
+    <div class="container"style="max-width: unset;width: 95%;margin-left: unset;margin-right: unset;">
+      <div class="row gy-4 position-relative">
+        <swiper
+        style="padding-left: unset;padding-right: unset;"
+          [config]="imgsSwiperConfig"
+          id="productSwiper"
+        >
+          <ng-container *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">
+            <ng-template swiperSlide>
+              <img [src]="'assets/'+i+'p.jpg'" class="w-100" />
+            </ng-template>
+          </ng-container>
+        </swiper>
         
       </div>
-    
-    
-  
+    </div>
+  </div>
+
+  <div class="overTextContainerOtherInnerDiv">
+    <div class="overLayTextSelf">
+      <h1>What's Getting In Your Way</h1>
+      <p>
+        Don’t let a painful condition or injury keep you from living your best
+        life! Our treatment plans are individualized and aimed toward the
+        achievement of your goals.
+      </p>
+      <p>
+        When you arrive, one of our team will design a treatment plan just for
+        you, taking into account your symptoms, medical history, and any health
+        restrictions you may have.
+      </p>
+    </div>
+    <div class="otherLandingImageIconsContainer">
+      <div class="otherLandingImageIcon">
+        <div class="iconImageContainer">
+          <img src="../../assets/backpain.png" />
+        </div>
+        <span>Back Pain</span>
+      </div>
+      <div class="otherLandingImageIcon">
+        <div class="iconImageContainer">
+          <img src="../../assets/neckpain.png" />
+        </div>
+        <span>Neck Pain</span>
+      </div>
+      <div class="otherLandingImageIcon">
+        <div class="iconImageContainer">
+          <img src="../../assets/shoulderpain.png" />
+        </div>
+        <span>Shoulder Pain</span>
+      </div>
+      <div class="otherLandingImageIcon">
+        <div class="iconImageContainer">
+          <img src="../../assets/kneepain.png" />
+        </div>
+        <span>Knee Pain</span>
+      </div>
+      <div class="otherLandingImageIcon">
+        <div class="iconImageContainer">
+          <img src="../../assets/sportsinjuries.png" />
+        </div>
+        <span>Sports Injuries</span>
+      </div>
+      <div class="otherLandingImageIcon">
+        <div class="iconImageContainer">
+          <img src="../../assets/footankle.png" />
+        </div>
+        <span>Foot & Ankle Pain</span>
+      </div>
+    </div>
+  </div>
+
   <app-footer />
 </div>
-

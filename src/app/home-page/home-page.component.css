@@ -242,6 +242,29 @@ font-weight: bold;
       }
       }
 
+
+
+
+
+      ::ng-deep .product-button-next {
+        color: black;
+        width: fit-content;
+        top: 25%;
+        transform: translateY(-50%);
+        right: -50px;
+        position: absolute;
+      }
+      
+      
+     
+
+
+
+
+
+
+
+
 /* colors */
 /* green rgb(107, 195, 32); */
 /* dark green rgb(82, 147, 25); */
