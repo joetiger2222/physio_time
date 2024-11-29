@@ -33,13 +33,18 @@
           },
           "configurations": {
             "production": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
+              "buildOptimizer": true,
+              "optimization":{
+                "scripts": true,
+                "styles": true,
+                "fonts": true
+              },
+              "vendorChunk": false,
               "extractLicenses": false,
-              "sourceMap": true,
+              "sourceMap": false,
               "namedChunks": true,
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "aot": true
             },
             "development": {
               "buildOptimizer": false,
