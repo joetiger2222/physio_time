@@ -33,18 +33,12 @@
           },
           "configurations": {
             "production": {
-              "buildOptimizer": true,
-              "optimization":{
-                "scripts": true,
-                "styles": true,
-                "fonts": true
-              },
-              "vendorChunk": false,
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": false,
-              "namedChunks": true,
-              "outputHashing": "all",
-              "aot": true
+              "sourceMap": true,
+              "namedChunks": true
             },
             "development": {
               "buildOptimizer": false,
@@ -55,7 +49,7 @@
               "namedChunks": true
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
